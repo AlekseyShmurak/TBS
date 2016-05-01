@@ -14,6 +14,12 @@
 		81DBEF3E1CB110B500D5B29E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81DBEF3C1CB110B500D5B29E /* LaunchScreen.storyboard */; };
 		81DBEF491CB110B500D5B29E /* TBSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DBEF481CB110B500D5B29E /* TBSTests.swift */; };
 		81DBEF541CB110B500D5B29E /* TBSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DBEF531CB110B500D5B29E /* TBSUITests.swift */; };
+		81DBEF631CB1111300D5B29E /* Field.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DBEF621CB1111300D5B29E /* Field.swift */; };
+		81DBEF651CB115FF00D5B29E /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DBEF641CB115FF00D5B29E /* Board.swift */; };
+		81DBEF681CB118B300D5B29E /* FieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DBEF671CB118B300D5B29E /* FieldView.swift */; };
+		81DBEF6C1CB1A24C00D5B29E /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DBEF6B1CB1A24C00D5B29E /* BoardView.swift */; };
+		81DBEF6E1CB1BB9D00D5B29E /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DBEF6D1CB1BB9D00D5B29E /* Character.swift */; };
+		81DBEF701CB1C07000D5B29E /* CharacterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DBEF6F1CB1C07000D5B29E /* CharacterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +53,12 @@
 		81DBEF4F1CB110B500D5B29E /* TBSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TBSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		81DBEF531CB110B500D5B29E /* TBSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TBSUITests.swift; sourceTree = "<group>"; };
 		81DBEF551CB110B500D5B29E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81DBEF621CB1111300D5B29E /* Field.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Field.swift; sourceTree = "<group>"; };
+		81DBEF641CB115FF00D5B29E /* Board.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		81DBEF671CB118B300D5B29E /* FieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldView.swift; sourceTree = "<group>"; };
+		81DBEF6B1CB1A24C00D5B29E /* BoardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		81DBEF6D1CB1BB9D00D5B29E /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		81DBEF6F1CB1C07000D5B29E /* CharacterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +109,8 @@
 		81DBEF321CB110B500D5B29E /* TBS */ = {
 			isa = PBXGroup;
 			children = (
+				81DBEF661CB1188900D5B29E /* UI */,
+				81DBEF611CB110CE00D5B29E /* Model */,
 				81DBEF331CB110B500D5B29E /* AppDelegate.swift */,
 				81DBEF351CB110B500D5B29E /* ViewController.swift */,
 				81DBEF371CB110B500D5B29E /* Main.storyboard */,
@@ -123,6 +137,26 @@
 				81DBEF551CB110B500D5B29E /* Info.plist */,
 			);
 			path = TBSUITests;
+			sourceTree = "<group>";
+		};
+		81DBEF611CB110CE00D5B29E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				81DBEF621CB1111300D5B29E /* Field.swift */,
+				81DBEF641CB115FF00D5B29E /* Board.swift */,
+				81DBEF6D1CB1BB9D00D5B29E /* Character.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		81DBEF661CB1188900D5B29E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				81DBEF671CB118B300D5B29E /* FieldView.swift */,
+				81DBEF6B1CB1A24C00D5B29E /* BoardView.swift */,
+				81DBEF6F1CB1C07000D5B29E /* CharacterView.swift */,
+			);
+			name = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,6 +292,12 @@
 			files = (
 				81DBEF361CB110B500D5B29E /* ViewController.swift in Sources */,
 				81DBEF341CB110B500D5B29E /* AppDelegate.swift in Sources */,
+				81DBEF651CB115FF00D5B29E /* Board.swift in Sources */,
+				81DBEF6C1CB1A24C00D5B29E /* BoardView.swift in Sources */,
+				81DBEF631CB1111300D5B29E /* Field.swift in Sources */,
+				81DBEF681CB118B300D5B29E /* FieldView.swift in Sources */,
+				81DBEF701CB1C07000D5B29E /* CharacterView.swift in Sources */,
+				81DBEF6E1CB1BB9D00D5B29E /* Character.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +522,7 @@
 				81DBEF5A1CB110B500D5B29E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		81DBEF5B1CB110B500D5B29E /* Build configuration list for PBXNativeTarget "TBSTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +531,7 @@
 				81DBEF5D1CB110B500D5B29E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		81DBEF5E1CB110B500D5B29E /* Build configuration list for PBXNativeTarget "TBSUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +540,7 @@
 				81DBEF601CB110B500D5B29E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

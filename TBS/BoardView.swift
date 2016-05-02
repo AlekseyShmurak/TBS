@@ -10,7 +10,8 @@ import UIKit
 
 class BoardView: UIView {
     var boardToDraw: Board
-    var fieldViews: [Array<FieldView>] = []
+    var fieldViews: [[FieldView!]]!
+    var activeFieldView : FieldView!
     var characters: [CharacterView] = []
     var openedFieldViews: [FieldView] = []
     var activeCharacter: CharacterView?
@@ -20,25 +21,26 @@ class BoardView: UIView {
         self.boardToDraw = boardToDraw
         
         super.init(frame: CGRect(x: 0, y: 0, width: (fieldSideSize+2)*boardToDraw.field.count + 2, height: (fieldSideSize+2)*boardToDraw.field.count + 2))
-        
+        fieldViews = Array(count:boardToDraw.field.count, repeatedValue:[FieldView!]())
         for numberOfFieldsOnX in 0..<boardToDraw.field.count{
-            self.fieldViews.append([])
+            fieldViews[numberOfFieldsOnX] = [FieldView!](count:boardToDraw.field[0].count,repeatedValue:nil)
             for numberOfFieldsOnY in 0..<boardToDraw.field[0].count{
                 
                 let fieldView = FieldView(x: 2+((2+fieldSideSize)*numberOfFieldsOnX), y: 2+((2+fieldSideSize)*numberOfFieldsOnY), side: fieldSideSize, field: boardToDraw.field[numberOfFieldsOnX][numberOfFieldsOnY],handler: handleFieldViewTap)
                 
                 self.addSubview(fieldView)
-                self.fieldViews[numberOfFieldsOnX].append(fieldView)
+                self.fieldViews[numberOfFieldsOnX][numberOfFieldsOnY] = fieldView // field 'fieldViews' can be depricated , you can use array of subview instead, or make it stored property in due of memory optimization
             }
         }
     }
     
-    func handleFieldViewTap(){
-        if activeCharacter != nil && FieldView.activeFieldView!.field.isOpened{
+    func handleFieldViewTap(activeField : FieldView){
+        activeFieldView = activeField
+        if activeCharacter != nil && activeFieldView.field.isOpened{
             openedFieldTap()
-        }else if FieldView.activeFieldView!.field.isOccupide{
+        }else if activeFieldView.field.isOccupide{
             for character in characters{
-                if character.character.coordinate == FieldView.activeFieldView!.field.coordinate{
+                if character.character.coordinate == activeFieldView.field.coordinate{
                     if character.character.isActive{
                         character.deactivate()
                         activeCharacter = nil
@@ -303,10 +305,10 @@ class BoardView: UIView {
     //-------------------------------------------------------------------------
     
     func openedFieldTap(){
-        if FieldView.activeFieldView!.field.isSelected{
+        if activeFieldView.field.isSelected{
             leaveField(fieldViews[activeCharacter!.character.coordinate.x][activeCharacter!.character.coordinate.y])
             UIView.animateWithDuration(0.5, animations: {
-                self.activeCharacter!.center = FieldView.activeFieldView!.center
+                self.activeCharacter!.center = self.activeFieldView.center
                 }, completion: {(Bool) in
                     print("move")
                     self.scanFieldsToMoveCharacter(self.activeCharacter!)
@@ -315,13 +317,13 @@ class BoardView: UIView {
                 field.deselect()
             }
             closeAllOpenedFieldViews()
-            occupideField(FieldView.activeFieldView!)
-            activeCharacter!.character.coordinate = (FieldView.activeFieldView?.field.coordinate)!
+            occupideField(activeFieldView)
+            activeCharacter!.character.coordinate = activeFieldView.field.coordinate
         }else{
             for field in self.openedFieldViews{
                 field.deselect()
             }
-            FieldView.activeFieldView!.select()
+            activeFieldView.select()
         }
         
     }

@@ -11,14 +11,15 @@ import UIKit
 
 class FieldView: UIView{
     
-    static var activeFieldView: FieldView?
+  
     
     let field: Field!
     var tapGesture: UITapGestureRecognizer!
-    var handler: ()->()!
+    var handler: FieldView -> ()!
     var stateView: UIView!
+    var boardFuncSetActive : (FieldView -> Void)!
     
-    init (x: Int, y: Int, side: Int, field: Field, handler:()->()){
+    init (x: Int, y: Int, side: Int, field: Field, handler:FieldView ->()){
         self.handler = handler
         self.field = field
         super.init(frame: CGRect(x: x, y: y, width: side , height: side))
@@ -28,16 +29,15 @@ class FieldView: UIView{
         self.stateView = view
         self.addSubview(view)
         
-        self.tapGesture = UITapGestureRecognizer(target: self, action:#selector(FieldView.handlerTapGesture))
+        self.tapGesture = UITapGestureRecognizer(target: self, action:#selector(handlerTapGesture))
 
         self.addGestureRecognizer(self.tapGesture)
+        
 
     }
     
     func handlerTapGesture(){
-        FieldView.activeFieldView = self
-        self.handler()
-        FieldView.activeFieldView = nil
+        handler(self)
     }
     
     func open(){
